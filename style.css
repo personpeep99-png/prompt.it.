@@ -43,3 +43,32 @@ button:hover {
     background: #222222;
     color: #ffffff;
 }
+
+.step-screen {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+}
+
+.step-screen h2 {
+    font-size: 36px;
+    margin-bottom: 35px;
+}
+
+.options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    width: 100%;
+    max-width: 650px;
+}
+
+.option {
+    width: 100%;
+    min-height: 70px;
+    font-size: 18px;
+}
