@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="style.css">
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +11,7 @@
 
 <body>
 
-    <main class="home">
+    <main class="home" id="homeScreen">
 
         <h1>Prompt It.</h1>
 
@@ -21,6 +20,34 @@
         <button id="startButton">START</button>
 
     </main>
+
+
+    <main class="step-screen" id="stepOne" style="display: none;">
+
+        <h2>What do you want AI to do?</h2>
+
+        <div class="options">
+
+            <button class="option">Explain</button>
+
+            <button class="option">Elaborate</button>
+
+            <button class="option">Describe</button>
+
+            <button class="option">Help me study</button>
+
+            <button class="option">Focus on</button>
+
+            <button class="option">Compare</button>
+
+            <button class="option">Break down</button>
+
+        </div>
+
+    </main>
+
+
+    <script src="script.js"></script>
 
 </body>
 </html>
