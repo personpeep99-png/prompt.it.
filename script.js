@@ -4,6 +4,7 @@ const homeScreen = document.getElementById("homeScreen");
 const stepOne = document.getElementById("stepOne");
 const stepTwo = document.getElementById("stepTwo");
 const materialStep = document.getElementById("materialStep");
+const whyStep = document.getElementById("whyStep");
 
 const stepTwoQuestion = document.getElementById("stepTwoQuestion");
 const stepTwoOptions = document.getElementById("stepTwoOptions");
@@ -12,11 +13,14 @@ const materialQuestion = document.getElementById("materialQuestion");
 const materialInputs = document.getElementById("materialInputs");
 const materialNext = document.getElementById("materialNext");
 
+const skipWhy = document.getElementById("skipWhy");
+
 
 // Remember the user's choices
 
 let selectedAction = "";
 let selectedMaterial = "";
+let selectedPurpose = "";
 
 
 // START
@@ -215,6 +219,39 @@ function createInput(labelText, inputID) {
 
 materialNext.addEventListener("click", function() {
 
-    alert("Great! We have the information we need.");
+    materialStep.style.display = "none";
+
+    whyStep.style.display = "flex";
 
 });
+const whyButtons = document.querySelectorAll("#whyOptions .option");
+
+whyButtons.forEach(function(button) {
+
+    button.addEventListener("click", function() {
+
+        selectedPurpose = button.dataset.purpose;
+
+        finishPrompt();
+
+    });
+
+});
+skipWhy.addEventListener("click", function() {
+
+    selectedPurpose = "";
+
+    finishPrompt();
+
+});
+function finishPrompt() {
+
+    whyStep.style.display = "none";
+
+    alert(
+        "Action: " + selectedAction +
+        "\nMaterial: " + selectedMaterial +
+        "\nPurpose: " + (selectedPurpose || "Skipped")
+    );
+
+}
