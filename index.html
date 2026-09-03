@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,8 @@
 </head>
 
 <body>
+
+    <!-- HOME SCREEN -->
 
     <main class="home" id="homeScreen">
 
@@ -22,27 +25,54 @@
     </main>
 
 
+    <!-- STEP 1 -->
+
     <main class="step-screen" id="stepOne" style="display: none;">
 
         <h2>What do you want AI to do?</h2>
 
         <div class="options">
 
-            <button class="option">Explain</button>
+            <button class="option" data-action="Explain">
+                Explain
+            </button>
 
-            <button class="option">Elaborate</button>
+            <button class="option" data-action="Elaborate">
+                Elaborate
+            </button>
 
-            <button class="option">Describe</button>
+            <button class="option" data-action="Describe">
+                Describe
+            </button>
 
-            <button class="option">Help me study</button>
+            <button class="option" data-action="Help me study">
+                Help me study
+            </button>
 
-            <button class="option">Focus on</button>
+            <button class="option" data-action="Focus on">
+                Focus on
+            </button>
 
-            <button class="option">Compare</button>
+            <button class="option" data-action="Compare">
+                Compare
+            </button>
 
-            <button class="option">Break down</button>
+            <button class="option" data-action="Break down">
+                Break down
+            </button>
 
         </div>
+
+    </main>
+
+
+    <!-- STEP 2 -->
+
+    <main class="step-screen" id="stepTwo" style="display: none;">
+
+        <h2 id="stepTwoQuestion"></h2>
+
+        <div class="options" id="stepTwoOptions"></div>
 
     </main>
 
@@ -50,4 +80,5 @@
     <script src="script.js"></script>
 
 </body>
+
 </html>
