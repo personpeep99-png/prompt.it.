@@ -4,7 +4,7 @@ const homeScreen = document.getElementById("homeScreen");
 const stepOne = document.getElementById("stepOne");
 const stepTwo = document.getElementById("stepTwo");
 
-const stepTwoQuestion = document.getElementById("stepTwoQuestion");
+const stepTwoQuestion = document.getElementById("stepTwoQuestion"); 
 const stepTwoOptions = document.getElementById("stepTwoOptions");
 
 
