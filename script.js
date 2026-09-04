@@ -297,8 +297,6 @@ skipHow.addEventListener("click", function() {
 });
 function buildPrompt() {
 
-   function buildPrompt() {
-
     howStep.style.display = "none";
     finalStep.style.display = "flex";
 
@@ -472,13 +470,10 @@ function buildPrompt() {
 
     // SHOW FINAL PROMPT
 
-    finalPrompt.textContent = prompt.trim();
+finalPrompt.textContent = prompt.trim();
 
 }
 
-    finalPrompt.textContent = prompt;
-
-}
 restartButton.addEventListener("click", function() {
 
     location.reload();
