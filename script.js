@@ -298,54 +298,68 @@ skipHow.addEventListener("click", function() {
 function buildPrompt() {
 
     howStep.style.display = "none";
-
     finalStep.style.display = "flex";
-
 
     let prompt = "";
 
+    const purpose = selectedPurpose;
+    const style = selectedStyle;
 
+
+    // =========================
     // COMPARE
+    // =========================
 
     if (selectedAction === "Compare") {
 
         if (selectedMaterial === "The two books") {
 
             prompt =
-                "Compare " +
+                "I'm " +
+                (purpose ? purpose.toLowerCase() : "trying to better understand these books") +
+                " and I'd like to compare " +
                 materialNames[0] +
                 " and " +
                 materialNames[1] +
                 ". ";
+
+            prompt +=
+                "Focus on their major themes, characters, similarities, and differences. ";
 
         }
 
         else if (selectedMaterial === "The two poems") {
 
             prompt =
-                "Compare " +
+                "I'd like to compare " +
                 materialNames[0] +
                 " and " +
                 materialNames[1] +
                 ". ";
+
+            prompt +=
+                "Focus on their themes, tone, literary devices, similarities, and differences. ";
 
         }
 
         else if (selectedMaterial === "The two passages") {
 
             prompt =
-                "Compare the following two passages: " +
+                "I'd like to compare these two passages: " +
                 materialNames[0] +
                 " and " +
                 materialNames[1] +
                 ". ";
+
+            prompt +=
+                "Focus on their main ideas, similarities, differences, and important details. ";
 
         }
 
         else {
 
             prompt =
-                "Compare " +
+                "I'd like to compare " +
                 materialNames.join(" and ") +
                 ". ";
 
@@ -354,19 +368,26 @@ function buildPrompt() {
     }
 
 
+    // =========================
     // EXPLAIN
+    // =========================
 
     else if (selectedAction === "Explain") {
 
         prompt =
-            "Explain " +
+            "I'd like to better understand " +
             materialNames[0] +
             ". ";
+
+        prompt +=
+            "Explain the most important ideas, details, and concepts I should know. ";
 
     }
 
 
+    // =========================
     // HELP ME STUDY
+    // =========================
 
     else if (selectedAction === "Help me study") {
 
@@ -375,10 +396,15 @@ function buildPrompt() {
             materialNames[0] +
             ". ";
 
+        prompt +=
+            "Review the most important information I should know and help me check my understanding. ";
+
     }
 
 
+    // =========================
     // OTHER ACTIONS
+    // =========================
 
     else {
 
@@ -391,33 +417,40 @@ function buildPrompt() {
     }
 
 
+    // =========================
     // PURPOSE
+    // =========================
 
-    if (selectedPurpose !== "") {
-
-        prompt +=
-    selectedPurpose +
-    ". ";
-
-    }
-
-
-    // RESPONSE STYLE
-
-    if (selectedStyle !== "") {
+    if (purpose) {
 
         prompt +=
-            selectedStyle +
+            "I'm doing this " +
+            purpose.toLowerCase() +
             ". ";
 
     }
-    copyButton.addEventListener("click", function() {
 
-    navigator.clipboard.writeText(finalPrompt.textContent);
 
-    copyMessage.textContent = "Prompt copied! ✓";
+    // =========================
+    // RESPONSE STYLE
+    // =========================
 
-});
+    if (style) {
+
+        prompt +=
+            style +
+            ". ";
+
+    }
+
+
+    // Final cleanup
+
+    prompt = prompt.trim();
+
+    finalPrompt.textContent = prompt;
+
+}
 
 
     finalPrompt.textContent = prompt;
