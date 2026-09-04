@@ -24,6 +24,7 @@ let selectedMaterial = "";
 let selectedPurpose = "";
 let selectedStyle = "";
 
+let materialNames = [];
 
 // START
 
@@ -220,6 +221,18 @@ function createInput(labelText, inputID) {
 // NEXT BUTTON
 
 materialNext.addEventListener("click", function() {
+
+    materialNames = [];
+
+    const inputs = materialInputs.querySelectorAll("input");
+
+    inputs.forEach(function(input) {
+
+        if (input.value.trim() !== "") {
+            materialNames.push(input.value.trim());
+        }
+
+    });
 
     materialStep.style.display = "none";
 
