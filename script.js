@@ -109,20 +109,30 @@ function showStepTwo() {
     }
 
 
-    else {
+    else if (selectedAction === "Elaborate") {
 
         stepTwoQuestion.textContent =
-            "What would you like to work with?";
+        "What would you like AI to elaborate on?";
 
-        createOption("The book");
-        createOption("The poem");
-        createOption("The passage");
-        createOption("The topic");
-
-    }
+    createOption("An idea");
+    createOption("A statement");
+    createOption("A passage");
+    createOption("A topic");
+    createOption("An explanation");
 
 }
+    else if (selectedAction === "Describe") {
 
+    stepTwoQuestion.textContent =
+        "What would you like described?";
+
+    createOption("A person");
+    createOption("A place");
+    createOption("An event");
+    createOption("An object");
+    createOption("A concept");
+
+}
 
 // CREATE STEP 2 BUTTON
 
