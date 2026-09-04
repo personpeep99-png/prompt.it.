@@ -6,6 +6,15 @@ const stepTwo = document.getElementById("stepTwo");
 const materialStep = document.getElementById("materialStep");
 const whyStep = document.getElementById("whyStep");
 const howStep = document.getElementById("howStep");
+const finalStep = document.getElementById("finalStep");
+
+const finalPrompt = document.getElementById("finalPrompt");
+
+const copyButton = document.getElementById("copyButton");
+
+const restartButton = document.getElementById("restartButton");
+
+const copyMessage = document.getElementById("copyMessage");
 
 const stepTwoQuestion = document.getElementById("stepTwoQuestion");
 const stepTwoOptions = document.getElementById("stepTwoOptions");
@@ -290,11 +299,133 @@ function buildPrompt() {
 
     howStep.style.display = "none";
 
-    alert(
-        "ACTION: " + selectedAction +
-        "\nMATERIAL: " + selectedMaterial +
-        "\nPURPOSE: " + (selectedPurpose || "Skipped") +
-        "\nSTYLE: " + (selectedStyle || "Skipped")
-    );
+    finalStep.style.display = "flex";
+
+
+    let prompt = "";
+
+
+    // COMPARE
+
+    if (selectedAction === "Compare") {
+
+        if (selectedMaterial === "The two books") {
+
+            prompt =
+                "Compare " +
+                materialNames[0] +
+                " and " +
+                materialNames[1] +
+                ". ";
+
+        }
+
+        else if (selectedMaterial === "The two poems") {
+
+            prompt =
+                "Compare " +
+                materialNames[0] +
+                " and " +
+                materialNames[1] +
+                ". ";
+
+        }
+
+        else if (selectedMaterial === "The two passages") {
+
+            prompt =
+                "Compare the following two passages: " +
+                materialNames[0] +
+                " and " +
+                materialNames[1] +
+                ". ";
+
+        }
+
+        else {
+
+            prompt =
+                "Compare " +
+                materialNames.join(" and ") +
+                ". ";
+
+        }
+
+    }
+
+
+    // EXPLAIN
+
+    else if (selectedAction === "Explain") {
+
+        prompt =
+            "Explain " +
+            materialNames[0] +
+            ". ";
+
+    }
+
+
+    // HELP ME STUDY
+
+    else if (selectedAction === "Help me study") {
+
+        prompt =
+            "Help me study " +
+            materialNames[0] +
+            ". ";
+
+    }
+
+
+    // OTHER ACTIONS
+
+    else {
+
+        prompt =
+            selectedAction +
+            " " +
+            materialNames.join(" and ") +
+            ". ";
+
+    }
+
+
+    // PURPOSE
+
+    if (selectedPurpose !== "") {
+
+        prompt +=
+            "I need this for " +
+            selectedPurpose.toLowerCase() +
+            ". ";
+
+    }
+
+
+    // RESPONSE STYLE
+
+    if (selectedStyle !== "") {
+
+        prompt +=
+            selectedStyle +
+            ". ";
+
+    }
+    copyButton.addEventListener("click", function() {
+
+    navigator.clipboard.writeText(finalPrompt.textContent);
+
+    copyMessage.textContent = "Prompt copied! ✓";
+
+});
+
+
+    finalPrompt.textContent = prompt;
 
 }
+restartButton.addEventListener("click", function() {
+
+    location.reload();
+
+});
