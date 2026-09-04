@@ -136,3 +136,33 @@ button:hover {
 #materialNext {
     margin-top: 5px;
 }
+.prompt-box {
+    width: 100%;
+    max-width: 750px;
+    padding: 25px;
+    border: 2px solid #222222;
+    border-radius: 14px;
+    background: #fafafa;
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+.prompt-box p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #222222;
+    margin: 0;
+}
+
+.final-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#copyMessage {
+    font-size: 16px;
+    color: #555555;
+    margin-top: 15px;
+}
