@@ -297,27 +297,43 @@ skipHow.addEventListener("click", function() {
 });
 function buildPrompt() {
 
+   function buildPrompt() {
+
     howStep.style.display = "none";
     finalStep.style.display = "flex";
 
     let prompt = "";
 
-    const purpose = selectedPurpose;
-    const style = selectedStyle;
+    // PURPOSE
+    let purposeSentence = "";
+
+    if (selectedPurpose === "test") {
+        purposeSentence = "I'm preparing for a test.";
+    } 
+    else if (selectedPurpose === "assignment") {
+        purposeSentence = "I'm working on an assignment.";
+    } 
+    else if (selectedPurpose === "discussion") {
+        purposeSentence = "I'm preparing for a class discussion.";
+    } 
+    else if (selectedPurpose === "study guide") {
+        purposeSentence = "I'm creating a study guide.";
+    } 
+    else if (selectedPurpose === "flashcards") {
+        purposeSentence = "I'm creating flashcards to help me review.";
+    } 
+    else if (selectedPurpose === "understanding") {
+        purposeSentence = "I want to understand this better.";
+    }
 
 
-    // =========================
     // COMPARE
-    // =========================
-
     if (selectedAction === "Compare") {
 
         if (selectedMaterial === "The two books") {
 
             prompt =
-                "I'm " +
-                (purpose ? purpose.toLowerCase() : "trying to better understand these books") +
-                " and I'd like to compare " +
+                "I'd like to compare " +
                 materialNames[0] +
                 " and " +
                 materialNames[1] +
@@ -325,7 +341,6 @@ function buildPrompt() {
 
             prompt +=
                 "Focus on their major themes, characters, similarities, and differences. ";
-
         }
 
         else if (selectedMaterial === "The two poems") {
@@ -339,7 +354,6 @@ function buildPrompt() {
 
             prompt +=
                 "Focus on their themes, tone, literary devices, similarities, and differences. ";
-
         }
 
         else if (selectedMaterial === "The two passages") {
@@ -353,7 +367,6 @@ function buildPrompt() {
 
             prompt +=
                 "Focus on their main ideas, similarities, differences, and important details. ";
-
         }
 
         else {
@@ -362,16 +375,11 @@ function buildPrompt() {
                 "I'd like to compare " +
                 materialNames.join(" and ") +
                 ". ";
-
         }
-
     }
 
 
-    // =========================
     // EXPLAIN
-    // =========================
-
     else if (selectedAction === "Explain") {
 
         prompt =
@@ -381,14 +389,10 @@ function buildPrompt() {
 
         prompt +=
             "Explain the most important ideas, details, and concepts I should know. ";
-
     }
 
 
-    // =========================
     // HELP ME STUDY
-    // =========================
-
     else if (selectedAction === "Help me study") {
 
         prompt =
@@ -398,14 +402,10 @@ function buildPrompt() {
 
         prompt +=
             "Review the most important information I should know and help me check my understanding. ";
-
     }
 
 
-    // =========================
-    // OTHER ACTIONS
-    // =========================
-
+    // OTHER OPTIONS
     else {
 
         prompt =
@@ -413,45 +413,68 @@ function buildPrompt() {
             " " +
             materialNames.join(" and ") +
             ". ";
+    }
+
+
+    // ADD PURPOSE
+
+    if (purposeSentence) {
+
+        prompt += purposeSentence + " ";
 
     }
 
 
-    // =========================
-    // PURPOSE
-    // =========================
+    // ADD RESPONSE STYLE
 
-    if (purpose) {
+    if (selectedStyle === "Explain simply") {
 
         prompt +=
-            "I'm doing this " +
-            purpose.toLowerCase() +
-            ". ";
+            "Please explain it in simple, easy-to-understand language.";
 
     }
 
-
-    // =========================
-    // RESPONSE STYLE
-    // =========================
-
-    if (style) {
+    else if (selectedStyle === "Give me a detailed explanation") {
 
         prompt +=
-            style +
-            ". ";
+            "Please give me a detailed explanation with useful examples.";
+
+    }
+
+    else if (selectedStyle === "Use bullet points") {
+
+        prompt +=
+            "Please organize the response using clear bullet points.";
+
+    }
+
+    else if (selectedStyle === "Give me examples") {
+
+        prompt +=
+            "Please include specific examples to help explain each important point.";
+
+    }
+
+    else if (selectedStyle === "Walk me through it step-by-step") {
+
+        prompt +=
+            "Please walk me through it step-by-step and make sure each part is clear before moving on.";
+
+    }
+
+    else if (selectedStyle === "Ask me questions") {
+
+        prompt +=
+            "Please ask me one question at a time and wait for my answer before continuing.";
 
     }
 
 
-    // Final cleanup
+    // SHOW FINAL PROMPT
 
-    prompt = prompt.trim();
-
-    finalPrompt.textContent = prompt;
+    finalPrompt.textContent = prompt.trim();
 
 }
-
 
     finalPrompt.textContent = prompt;
 
