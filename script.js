@@ -5,6 +5,7 @@ const stepOne = document.getElementById("stepOne");
 const stepTwo = document.getElementById("stepTwo");
 const materialStep = document.getElementById("materialStep");
 const whyStep = document.getElementById("whyStep");
+const howStep = document.getElementById("howStep");
 
 const stepTwoQuestion = document.getElementById("stepTwoQuestion");
 const stepTwoOptions = document.getElementById("stepTwoOptions");
@@ -14,13 +15,14 @@ const materialInputs = document.getElementById("materialInputs");
 const materialNext = document.getElementById("materialNext");
 
 const skipWhy = document.getElementById("skipWhy");
-
+const skipHow = document.getElementById("skipHow");
 
 // Remember the user's choices
 
 let selectedAction = "";
 let selectedMaterial = "";
 let selectedPurpose = "";
+let selectedStyle = "";
 
 
 // START
@@ -248,10 +250,38 @@ function finishPrompt() {
 
     whyStep.style.display = "none";
 
+    howStep.style.display = "flex";
+
+}
+const howButtons = document.querySelectorAll("#howOptions .option");
+
+howButtons.forEach(function(button) {
+
+    button.addEventListener("click", function() {
+
+        selectedStyle = button.dataset.style;
+
+        buildPrompt();
+
+    });
+
+});
+skipHow.addEventListener("click", function() {
+
+    selectedStyle = "";
+
+    buildPrompt();
+
+});
+function buildPrompt() {
+
+    howStep.style.display = "none";
+
     alert(
-        "Action: " + selectedAction +
-        "\nMaterial: " + selectedMaterial +
-        "\nPurpose: " + (selectedPurpose || "Skipped")
+        "ACTION: " + selectedAction +
+        "\nMATERIAL: " + selectedMaterial +
+        "\nPURPOSE: " + (selectedPurpose || "Skipped") +
+        "\nSTYLE: " + (selectedStyle || "Skipped")
     );
 
 }
