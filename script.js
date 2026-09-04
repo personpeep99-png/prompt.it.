@@ -396,9 +396,8 @@ function buildPrompt() {
     if (selectedPurpose !== "") {
 
         prompt +=
-            "I need this for " +
-            selectedPurpose.toLowerCase() +
-            ". ";
+    selectedPurpose +
+    ". ";
 
     }
 
